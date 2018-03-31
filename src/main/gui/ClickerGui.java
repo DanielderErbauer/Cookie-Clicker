@@ -20,21 +20,22 @@ public class ClickerGui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	public JTextField textField;
 	private JButton btnCookieGen;
-	private int numbCookies;
-	private int megaCookies;
+	public int numbCookies;
+	public int megaCookies;
+	public javax.swing.Timer timer;
 	private JButton btnShutdown;
 	private JButton btnSave;
 	private JButton btnCcx;
 	private JButton btnRandomcookies;
-	private JTextField megaCookiesTextField;
+	public JTextField megaCookiesTextField;
 
 	public ClickerGui() throws IOException {
 		megaCookies = DataLoader.load("save/megaCookies.txt", 0);
 		numbCookies = DataLoader.load("save/numbCookies.txt", 0);
 		this.setTitle("Cookie Clicker in Java");
-
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 290);
 		contentPane = new JPanel();
@@ -53,7 +54,7 @@ public class ClickerGui extends JFrame {
 		btnCookieGen = new JButton(cookie);
 		btnCookieGen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CookieFactory.onCookieClicked();
+				CookieFactory.onCookiePressed();
 				numbCookies = CookieFactory.getnumbCookies();
 				megaCookies = CookieFactory.getmegaCookies();
 				textField.setText("Cookies: " + numbCookies);
@@ -141,6 +142,18 @@ public class ClickerGui extends JFrame {
 		contentPane.add(megaCookiesTextField);
 		megaCookiesTextField.setColumns(10);
 		megaCookiesTextField.setText("MegaCookies: " + megaCookies);
+
+		ImageIcon grandma = new ImageIcon("resources/grandma.png");
+		JButton btnGrandma = new JButton(grandma);
+		btnGrandma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				numbCookies = CookieFactory.onGrandmaPressed();
+				textField.setText("Cookies: " + numbCookies);
+			}
+		});
+		btnGrandma.setBounds(226, 42, 62, 62);
+		contentPane.add(btnGrandma);
+		
 		setLocationRelativeTo(null);
 	}
 }

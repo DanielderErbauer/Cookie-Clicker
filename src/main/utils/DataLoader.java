@@ -1,11 +1,8 @@
 package main.utils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class DataLoader {
@@ -27,23 +24,7 @@ public class DataLoader {
 		
 		return 0;
 	}
-	
-	public static Integer[] loadRandomEvents(String filename) {
-		try {
-			Scanner scanner = new Scanner(new File(filename));
-			List<Integer> lines = new ArrayList<Integer>();
-			while(scanner.hasNextLine()) {
-				lines.add(scanner.nextInt());
-			}
-			Integer[] array = lines.toArray(new Integer[0]);
-			scanner.close();
-			return array;
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-	
+		
 	public static void save(String filename, int value) throws IOException{
 		FileWriter writer;
 		File file = new File(filename);
