@@ -15,7 +15,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		Main main = new Main();
-		main.backroundTimer(new BackroundUpdateTimer(), 1000, 100);
+		main.backroundTimer(new BackroundUpdateTimer(), 100, 100);
 		main.backroundTimer(new BackroundCookieMakingTimer(), 1000, 2000);
 		main.start();
 

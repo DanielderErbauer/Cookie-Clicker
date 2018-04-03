@@ -10,6 +10,7 @@ public class BackroundCookieMakingTimer extends TimerTask {
 	public void run() {
 		CookieFactory.grandmaBaking();
 		CookieFactory.mineMining();
+		CookieFactory.factoryFactoring();
 	}
 
 }
